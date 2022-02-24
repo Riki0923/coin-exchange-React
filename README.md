@@ -1,3 +1,22 @@
+# Simple Description
+
+- This coin-exchange project has been built by React, Html, Javascript and CSS.
+- Following utilities has been used: Axios, Bootsrap, styled components, fortawesome/fontawesome
+
+## What does it Do?
+
+- It gets the top 10 coins from Coinpaprika, showing its names, tickers and prices
+- You are starting with a balance of 10000 dollars, you can add 1200 dollars with the helicopter button each time you click on it
+- You can also buy or sell each coins, and it will update your dollar and coin balance as well.
+
+## How to run it?
+
+- I have run this code via npm start (localhost:3000) by React, once you downloaded make sure you download everything from the package.json to be able to see this code working.
+
+## Future Development
+
+- I might upgrade this in the future, it depends on the Programming language I will focus
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
