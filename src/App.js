@@ -5,6 +5,11 @@ import ExchangeHeader from './ExchangeHeader.jsx';
 import styled from 'styled-components';
 import axios from 'axios';
 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootswatch/dist/flatly/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/js/all';
+
+
 const Div = styled.div `
 text-align: center;
 background-color: rgba(20, 56, 97);
@@ -17,7 +22,7 @@ const formatPrice = price => parseFloat(Number(price).toFixed(4));
 function App(props)  {
 
   const [balance, setBalance] = useState(10000);
-  const [showBalance, setShowBalance] = React.useState(true);
+  const [showBalance, setShowBalance] = React.useState(false);
   const [coinData, setCoinData] = useState([]);
 
   const componentDidMount = async () => {
@@ -46,6 +51,10 @@ function App(props)  {
     }
   });
 
+  const handleBrrrr = () => {
+    setBalance( oldBalance => oldBalance += 1200 );
+  }
+
   const handleRefresh = async (valueChangeId) => {
     const tickerURL = `https://api.coinpaprika.com/v1/tickers/${valueChangeId}`;
     const response = await axios.get(tickerURL);
@@ -56,7 +65,6 @@ function App(props)  {
         newValues.price = newPrice;
       }
       return  newValues;
-      
     });
     setCoinData(newCoinData);
   }
@@ -64,16 +72,32 @@ function App(props)  {
   const hideBalance = () => {
     setShowBalance(oldValue => !oldValue);
   }
+
+  const handleTransaction = (isBuy, valueChangedId) => {
+    var balanceChange = isBuy ? 1 : -1;
+    const newCoinData = coinData.map(function (values){
+      let newValues = {...values};
+      if( valueChangedId === values.key){
+        newValues.balance += balanceChange;
+        setBalance(oldBalance => oldBalance - balanceChange * newValues.price);
+      }
+      return newValues;
+    })
+    setCoinData(newCoinData);
+  }
+
     return (
       <Div className="App">
         <ExchangeHeader/>
         <AccountBalance 
-        amount={10000} 
-        showBalance={showBalance} 
-        hideBalance={hideBalance}/>
+        amount={balance} 
+        showBalance={showBalance}
+        handleBrrrr={handleBrrrr}
+        hideBalance={hideBalance} />
         <CoinList 
         coinData={coinData} 
         handleRefresh={handleRefresh}
+        handleTransaction={handleTransaction}
         showBalance={showBalance}/>
       </Div>
     );

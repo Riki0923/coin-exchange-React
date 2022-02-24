@@ -4,7 +4,8 @@ import logo from './logo.svg';
 
 const Header = styled.header `
 background-color: #282c34;
-min-height: 20vh;
+min-height: 10vh;
+width: 100%;
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -27,7 +28,10 @@ animation: App-logo-spin infinite 20s linear;
 `;
 
 const H1 = styled.h1 `
-font-size: 36px;
+font-size: 3rem;
+line-height: 8rem;
+font-weight: bold;
+min-widh: 300px;
 `;
 
 export default class ExchangeHeader extends Component {
