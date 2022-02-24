@@ -15,7 +15,7 @@
 
 ## Future Development
 
-- I might upgrade this in the future, it depends on the Programming language I will focus
+- I might upgrade this in the future, it depends on the Programming language I will focus on.
 
 # Getting Started with Create React App
 
